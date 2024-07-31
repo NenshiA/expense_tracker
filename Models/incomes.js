@@ -9,14 +9,7 @@ class incomesModel {
     async addIncomes(bodyData) {
         const incomes = mongoose.model("incomes", incomesSchema);
 
-        const newincomes = new incomes({
-            title: bodyData.title,
-            amount: bodyData.amount,
-            type: bodyData.type,
-            date: bodyData.date,
-            category: bodyData.category,
-            description: bodyData.description
-        });
+        const newincomes = new incomes(bodyData);
         await newincomes.save();
         return newincomes;
     }

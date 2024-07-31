@@ -9,14 +9,7 @@ class expensesModel {
     async addExpenses(bodyData) {
         const expense = mongoose.model("expenses", expensesSchema);
 
-        const newexpense = new expense({
-            title: bodyData.title,
-            amount: bodyData.amount,
-            type: bodyData.type,
-            date: bodyData.date,
-            category: bodyData.category,
-            description: bodyData.description
-        });
+        const newexpense = new expense(bodyData);
         await newexpense.save();
         return newexpense;
     }
